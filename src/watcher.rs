@@ -313,7 +313,7 @@ impl FSWatch {
             .dirs
             .lock()
             .map_err(|err| anyhow!("Failed to lock watcher: {:?}", err))?;
-        let mut dw = dirs
+        let dw = dirs
             .get_mut(key)
             .ok_or_else(|| anyhow!("Unexpected watcher state: file not watched"))?;
         match filename {
